@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc --module commonjs --outDir build",
+    "publish": "func() { tsc --module commonjs --outDir build && git add . && git commit -m ${1:-standard} && git push origin master && npm version ${2:-patch} || patch && npm publish; }; func"
   },
   "author": "",
   "license": "ISC"
